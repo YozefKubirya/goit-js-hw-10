@@ -47,10 +47,11 @@ function renderMarkup(country) {
         <li class = "country-list__item">
             <img class = "country-list__img" src = "${flags.svg}" width="50" >
             <p class = "country-list__article">${name.common}</p>
+            </li>
              <p><b>Capital</b>: ${capital}</p>
             <p><b>Population</b>: ${population}</p>
             <p><b>Languages</b>: ${lang}</p>
-        </li>
+      
         `}).join('');
    
       
