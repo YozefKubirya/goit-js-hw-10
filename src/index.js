@@ -31,25 +31,32 @@ function renderMarkup(country) {
          `
         <li class = "country-list__item">
             <img class = "country-list__img" src = "${flags.svg}" width="50" >
-            <p class = "country-list__article">${name}</p>
+            <p class = "country-list__article">${name.common}</p>
         </li>
         `
       ).join('');
       refs.countryInfo.innerHTML = ' ';
       refs.countryList.innerHTML = markupList;
    } else {
-     
-      const markupinfo = country.map(({ flags, name, capital, population, languages }) => `
+      
+      const markupinfo = country.map(({ flags, name, capital, population, languages }) => {
+         let lang = ''
+         for (let key in languages) {
+            lang = languages[key];
+         }
+         return `
         <li class = "country-list__item">
             <img class = "country-list__img" src = "${flags.svg}" width="50" >
-            <p class = "country-list__article">${name}</p>
+            <p class = "country-list__article">${name.common}</p>
              <p><b>Capital</b>: ${capital}</p>
             <p><b>Population</b>: ${population}</p>
-            <p><b>Languages</b>: ${languages}</p>
+            <p><b>Languages</b>: ${lang}</p>
         </li>
-        `).join('');
+        `}).join('');
+   
       refs.countryList.innerHTML = ' ';
-       refs.countryInfo.innerHTML = markupinfo;
+      refs.countryInfo.innerHTML = markupinfo;
+      
    }
 };
 function onError() {
